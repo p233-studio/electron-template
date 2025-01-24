@@ -11,7 +11,7 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.tsx"],
+    files: ["src/renderer/**/*.tsx"],
     settings: {
       react: {
         version: "detect"
