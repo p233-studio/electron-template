@@ -1,0 +1,26 @@
+.root {
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  gap: rhythm(2);
+  align-items: center;
+  height: rhythm(7);
+  padding-right: rhythm(2);
+  padding-left: rhythm(2);
+  background: rgba(0, 0, 0, 0.025);
+
+  &__logo {
+    width: rhythm(2);
+    height: rhythm(2);
+  }
+
+  &__link {
+    opacity: 0.5;
+
+    &[aria-current] {
+      opacity: 1;
+    }
+  }
+}
