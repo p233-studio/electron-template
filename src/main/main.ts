@@ -32,6 +32,20 @@ const createWindow = () => {
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });
+
+  // Set CSP headers
+  // production: strict CSP allowing only same-origin resources
+  // development: allow unsafe-inline scripts and styles
+  mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        "Content-Security-Policy": app.isPackaged
+          ? ["default-src 'self'"]
+          : ["default-src 'self' 'unsafe-inline'"]
+      }
+    });
+  });
 };
 
 // This method will be called when Electron has finished
